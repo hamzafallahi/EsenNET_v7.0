@@ -21,7 +21,7 @@ const StatBubble = ({ count, label, className }: StatBubbleProps) => (
 
 export default function ESENetBanner() {
   return (
-    <div className="relative w-full overflow-hidden bg-[#002b56] flex flex-col items-center justify-center rounded-lg py-20">
+    <div className="content-visibility-auto relative w-full overflow-hidden bg-[#002b56] flex flex-col items-center justify-center rounded-lg py-20">
       <div className="absolute inset-0 w-full h-full bg-[#002b56] opacity-80" />
       <Boxes /> {/* Adding Boxes back for background effect */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4">

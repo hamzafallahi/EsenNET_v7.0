@@ -33,7 +33,7 @@ function StatsCard({ icon, number, label }: { icon: React.ReactNode; number: str
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.4 }}
     >
-      <Card className="p-12 text-center bg-white/10 border-white/20 backdrop-blur-lg">
+      <Card className="content-visibility-auto p-12 text-center bg-white/10 border-white/20 backdrop-blur-lg">
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}

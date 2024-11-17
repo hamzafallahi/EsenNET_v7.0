@@ -147,8 +147,10 @@ export function EventProgram() {
   ];
 
   return (
-    <div className="w-full bg-gradient-to-br from-[#002b56] via-[#003f7f] to-[#005e9b] py-8 px-4">
-      <Timeline data={data} />
+    <div className="content-visibility-auto w-full bg-gradient-to-br from-[#002b56] via-[#003f7f] to-[#005e9b] py-8 px-4">
+      <Timeline data={data}
+        
+      />
     </div>
   );
 }

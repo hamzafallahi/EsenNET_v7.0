@@ -1,3 +1,4 @@
+//images-slider.tsx
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -75,7 +76,7 @@ export const ImagesSlider = ({
     if (autoplay) {
       interval = setInterval(() => {
         handleNext();
-      }, 5000);
+      }, 6000);
     }
 
     return () => {

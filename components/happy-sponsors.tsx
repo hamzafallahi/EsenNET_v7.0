@@ -36,7 +36,7 @@ const sponsors: Sponsor[] = [
 
 export function HappySponsors() {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="content-visibility-auto py-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-gray-500 text-sm font-bold uppercase mb-4 tracking-wide">
           Nos Partenaires

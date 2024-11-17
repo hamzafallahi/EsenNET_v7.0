@@ -46,7 +46,7 @@ export function Speaker() {
     },
   ];
   return (
-    <div className="flex justify-center items-center flex-col bg-slate-50 py-14">
+    <div className="content-visibility-auto flex justify-center items-center flex-col bg-slate-50 py-14" >
       <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
   Intervenants de l&apos;événement
 </h1>

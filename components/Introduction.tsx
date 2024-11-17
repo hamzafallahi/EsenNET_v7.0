@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export function Introduction() {
   return (
-    <section id="introduction" className="py-32 px-4 md:px-8 bg-white text-[#002b56]">
+    <section id="introduction" className="content-visibility-auto py-32 px-4 md:px-8 bg-white text-[#002b56]">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}

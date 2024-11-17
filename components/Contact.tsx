@@ -68,7 +68,7 @@ const [modalContent, setModalContent] = useState("");
   }, [isModalOpen]);
 
   return (
-    <section  className="py-32 px-4 md:px-8 bg-[#001f3f] relative overflow-hidden" >
+    <section  className="content-visibility-auto py-32 px-4 md:px-8 bg-[#001f3f] relative overflow-hidden" >
       <BackgroundLines />
       <div  className="max-w-3xl mx-auto relative z-10">
         <motion.div

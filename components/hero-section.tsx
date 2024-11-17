@@ -1,3 +1,4 @@
+//hero-section.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -18,7 +19,7 @@ interface TimerComponentProps {
 }
 
 const TimerComponent: React.FC<TimerComponentProps> = ({ value, label }) => (
-  <div className="flex flex-col items-center justify-center bg-blue-500/10 rounded-lg p-3 m-2 min-w-[100px] border border-blue-500/20">
+  <div className=" flex flex-col items-center justify-center bg-blue-500/10 rounded-lg p-3 m-2 min-w-[100px] border border-blue-500/20">
     <span className="text-3xl font-bold text-white mb-1">
       {value.toString().padStart(2, "0")}
     </span>
@@ -50,7 +51,7 @@ const Countdown: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, []);
@@ -90,7 +91,7 @@ export const ImagesSliderDemo: React.FC<ImagesSliderDemoProps> = ({
 }) => {
   const scrollToBottom = () => {
     // Scroll to the bottom of the page
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({ top: document.body.scrollHeight-100, behavior: "smooth" });
   };
 
   const images: string[] = [

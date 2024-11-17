@@ -47,7 +47,7 @@ export default function AnimatedTestimonials({ testimonials }: AnimatedTestimoni
   }, [testimonialsLength]);
 
   return (
-    <div className="overflow-hidden relative w-full" ref={containerRef}>
+    <div className="overflow-hidden relative w-full" ref={containerRef} >
       <div className="flex w-max">
         {[...testimonials, ...testimonials].map((testimonial, idx) => (
           <div
