@@ -27,7 +27,7 @@ export function Speaker() {
       quote:
         "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
       name: "Mahjoub Langar",
-      designation: "PDG polina groupe",
+      designation: "PDG poulina groupe",
       src: "/speqkers/Mahjoub.png",
     },
     {

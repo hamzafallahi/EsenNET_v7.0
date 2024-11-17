@@ -42,9 +42,9 @@ export function Contact() {
       });
 
       if (response.ok) {
-        setModalContent("Form submitted successfully!, Check your inbox.");
+        setModalContent("Form submitted successfully! Check your inbox.");
       } else {
-        setModalContent('Failed to submit form. you cant submit more once');
+        setModalContent('Failed to submit form. you cant submit more than once');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
