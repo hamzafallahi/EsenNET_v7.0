@@ -31,7 +31,7 @@ export function EventProgram() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/planing/digi.jpg"
+              src="/planing/digi.webp"
               alt="hero template"
               width={500}
               height={500}
@@ -50,7 +50,7 @@ export function EventProgram() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/planing/innov.jpg"
+              src="/planing/innov.webp"
               alt="feature template"
               width={500}
               height={500}
@@ -67,7 +67,7 @@ export function EventProgram() {
           
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/planing/cafe.jpg"
+              src="/planing/cafe.webp"
               alt="feature template"
               width={500}
               height={500}
@@ -86,7 +86,7 @@ export function EventProgram() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/planing/debat.jpg"
+              src="/planing/debat.webp"
               alt="feature template"
               width={500}
               height={500}
@@ -105,7 +105,7 @@ export function EventProgram() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/planing/NETWORKING2.png"
+              src="/planing/NETWORKING2.webp"
               alt="feature template"
               width={500}
               height={500}
@@ -124,7 +124,7 @@ export function EventProgram() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/planing/ATELIERR-PMI-INJAZ.jpg"
+              src="/planing/ATELIERR-PMI-INJAZ.webp"
               alt="feature template"
               width={500}
               height={500}

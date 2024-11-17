@@ -15,7 +15,7 @@ export function Introduction() {
           className="relative h-[600px] rounded-2xl overflow-hidden group"
         >
           <motion.img
-            src="/gallery/121.jpg"
+            src="/gallery/121.webp"
             alt="ecole"
             className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700"
           />

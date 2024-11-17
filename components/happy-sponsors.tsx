@@ -9,7 +9,7 @@ interface Sponsor {
 }
 
 const sponsors: Sponsor[] = [
-  { name: "ABSHORE", logo: "/logo/ABSHORE.png", description: "Crafted to the dot" },
+  { name: "ABSHORE", logo: "/logo/ABSHORE.png", },
   { name: "AICTO", logo: "/logo/AICTO.png" },
   { name: "bi4you", logo: "/logo/bi4you.png" },
   { name: "BIU", logo: "/logo/biu.png" },

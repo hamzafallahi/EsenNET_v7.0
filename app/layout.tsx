@@ -46,7 +46,10 @@ export const metadata: Metadata = {
     "étudiants ESEN Manouba",
     "stages et emplois étudiants",
     "ESENet 2023",
-  ]
+  ],
+  robots: "index, follow",
+  
+        
 };
 
 

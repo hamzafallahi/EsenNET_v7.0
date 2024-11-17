@@ -21,8 +21,9 @@ export function Contact() {
     source: '',
   });
 
-  const [modalContent, setModalContent] = useState('');
+const [modalContent, setModalContent] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -31,12 +32,13 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true); // Trigger the loading modal
 
     try {
-      const response = await fetch('/api/registration', {
-        method: 'POST',
+      const response = await fetch("/api/registration", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -44,17 +46,15 @@ export function Contact() {
       if (response.ok) {
         setModalContent("Form submitted successfully! Check your inbox.");
       } else {
-        setModalContent('Failed to submit form. you cant submit more than once');
+        setModalContent("Failed to submit form. You can't submit more than once.");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setModalContent('An error occurred. Please try again later.');
+      console.error("Error submitting form:", error);
+      setModalContent("An error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false); // Hide the loading modal
+      setIsModalOpen(true); // Show the main modal
     }
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   // Automatically close the modal after 5 seconds
@@ -62,7 +62,7 @@ export function Contact() {
     if (isModalOpen) {
       const timer = setTimeout(() => {
         setIsModalOpen(false);
-      }, 5000);
+      }, 9000);
       return () => clearTimeout(timer);
     }
   }, [isModalOpen]);
@@ -231,6 +231,7 @@ export function Contact() {
                 type="submit"
                 size="lg"
                 className="w-full bg-white text-[#001f3f] hover:bg-blue-50 h-12 text-lg font-semibold"
+                
               >
                 Submit <Send className="ml-2 w-5 h-5" />
               </Button>
@@ -238,6 +239,15 @@ export function Contact() {
           </Card>
         </motion.div>
       </div>
+
+      {isLoading && ( 
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+         <div className=" p-6 rounded shadow-lg text-center">
+         <p className="text-xl font-bold">Submitting...</p>
+        </div>
+        </div>
+
+     )}
 
       {isModalOpen && (
         <motion.div
