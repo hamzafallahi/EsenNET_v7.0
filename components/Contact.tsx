@@ -14,9 +14,9 @@ export function Contact() {
     prenom: '',
     email: '',
     Tele: '',
+    vous: '',
     faculte: '',
-    niveau: '',
-    specialite: '',
+    organisme: '',
     recherche: '',
     source: '',
   });
@@ -118,15 +118,32 @@ const [modalContent, setModalContent] = useState("");
                 required
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12"
               />
+            <select
+            name="vous"
+            value={formData.vous}
+            onChange={handleChange}
+            required
+            className="bg-white/10 border-white/20 text-white/50 placeholder:text-white/50 h-12 w-full rounded-md"
+          >
+            <option value=""> &nbsp; Vous êtes quoi ?</option>
+            <option value="etudiant" className='text-black'> &nbsp; Étudiant</option>
+            <option value="Enseignant" className='text-black'> &nbsp; Enseignant</option>
+            <option value="Entreprise" className='text-black'> &nbsp; Entreprise</option>
+            <option value="Startup" className='text-black'> &nbsp; Startup</option>
+            <option value="A/ONG" className='text-black'> &nbsp; Association / ONG</option>
+            <option value="Autre" className='text-black'> &nbsp; Autre</option>
+          </select>
+             {["etudiant", "Enseignant"].includes(formData.vous) && (
+            <>
+              {/* Faculté Selection */}
               <select
                 name="faculte"
-                value={formData.faculte }
+                value={formData.faculte}
                 onChange={handleChange}
                 required
-                className="bg-white/10  text-white/50 placeholder:text-white/50 h-12 w-full rounded-md border-white/20"
-                
+                className="bg-white/10 border-white/20 text-white/50 placeholder:text-white/50 h-12 w-full rounded-md"
               >
-                <option value="" > &nbsp; votre faculté</option>
+                <option value="" > &nbsp; Votre Etablissement</option>
                 <option value="ESEN" className='text-black'>Ecole Supérieure de l Economie Numérique de la Manouba (ESEN)</option>
                 <option value="ENSI" className='text-black'>Ecole Nationale des Sciences de l Informatique (ENSI)</option>
                 <option value="ISAMM" className='text-black'>Institut Supérieur des Arts Multimédia de la Manouba (ISAMM)</option>
@@ -176,29 +193,8 @@ const [modalContent, setModalContent] = useState("");
                 <option value="ISEAHZ" className='text-black'>ISEAHZ</option>
               
                 
-              </select>
-              <select
-                name="niveau"
-                value={formData.niveau}
-                onChange={handleChange}
-                required
-                className="bg-white/10 border-white/20 text-white/50 placeholder:text-white/50 h-12 w-full rounded-md "
-              >
-                <option value=""> &nbsp; Niveau d'études (L1, L2, L3, M1, M2)</option>
-                <option value="L1" className='text-black'>L1</option>
-                <option value="L2" className='text-black'>L2</option>
-                <option value="L3" className='text-black'>L3</option>
-                <option value="M1" className='text-black'>M1</option>
-                <option value="M2" className='text-black'>M2</option>
-              </select>
-              <Input
-                name="specialite"
-                placeholder="Spécialité"
-                value={formData.specialite}
-                onChange={handleChange}
-                required
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-md"
-              />
+                  </select>
+                                {/* Recherche Selection */}
               <select
                 name="recherche"
                 value={formData.recherche}
@@ -206,12 +202,42 @@ const [modalContent, setModalContent] = useState("");
                 required
                 className="bg-white/10 border-white/20 text-white/50 placeholder:text-white/50 h-12 w-full rounded-md"
               >
-                <option value=""> &nbsp; Êtes-vous à la recherche :</option>
+                <option value=""> &nbsp; Êtes-vous à la recherche de :</option>
                 <option value="stage" className='text-black'>D’un stage</option>
                 <option value="emploi" className='text-black'>D’un emploi</option>
                 <option value="apprentissage" className='text-black'>D’un apprentissage</option>
                 <option value="information" className='text-black'>Juste d’information</option>
               </select>
+            </>
+          )}
+               {["Entreprise", "Startup", "A/ONG", "Autre"].includes(formData.vous) && (
+            <>
+              {/* Organisme Affiliation */}
+              <input
+                name="organisme"
+                placeholder=" &nbsp; L'organisme d'affiliation"
+                value={formData.organisme}
+                onChange={handleChange}
+                required
+                className="bg-white/10 border-white/20 text-white/50 placeholder:text-white/50 h-12 w-full rounded-md"
+              />
+
+              {/* Recherche1 Selection */}
+              <select
+                name="recherche"
+                value={formData.recherche}
+                onChange={handleChange}
+                required
+                className="bg-white/10 border-white/20 text-white/50 placeholder:text-white/50 h-12 w-full rounded-md"
+              >
+                <option value=""> &nbsp; Êtes-vous à la recherche de :</option>
+                <option value="stager" className='text-black'>D’un stager</option>
+                <option value="networking" className='text-black'>Du networking</option>
+                <option value="partenaires" className='text-black'>D’un partenaires</option>
+                <option value="information" className='text-black'>Juste d’information</option>
+              </select>
+            </>
+          )}
               <select
                 name="source"
                 value={formData.source}
@@ -225,7 +251,7 @@ const [modalContent, setModalContent] = useState("");
                 <option value="email" className='text-black'>Par e-mail</option>
                 <option value="radio" className='text-black'>Via radio</option>
                 <option value="socialMedia" className='text-black'>Sur les réseaux sociaux (Facebook, Instagram, LinkedIn)</option>
-                <option value="friend" className='text-black'>Par un(e) ami(e) ou un(e) camarade de classe</option>
+                <option value="friend" className='text-black'>Par un(e) ami(e) ou un(e) collègue</option>
               </select>
               <Button
                 type="submit"

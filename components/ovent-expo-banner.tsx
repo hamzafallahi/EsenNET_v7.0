@@ -21,7 +21,7 @@ const StatBubble = ({ count, label, className }: StatBubbleProps) => (
 
 export default function ESENetBanner() {
   return (
-    <div className="content-visibility-auto relative w-full overflow-hidden bg-[#002b56] flex flex-col items-center justify-center rounded-lg py-20">
+    <div className="relative w-full overflow-hidden bg-[#002b56] flex flex-col items-center justify-center rounded-lg py-20">
       <div className="absolute inset-0 w-full h-full bg-[#002b56] opacity-80" />
       <Boxes /> {/* Adding Boxes back for background effect */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4">
@@ -44,7 +44,7 @@ export default function ESENetBanner() {
               <div className="flex items-start space-x-4">
                 <Calendar className="w-6 h-6 text-blue-300 flex-shrink-0 mt-1" />
                 <p className="text-sm text-white">
-                Connectez-vous avec des entreprises de premier plan au cœur de l'innovation à Tunis.
+                Connectez-vous avec des entreprises de premier plan au cœur de l'innovation en tunisie.
                 </p>
               </div>
               <div className="flex items-start space-x-4">
@@ -59,19 +59,19 @@ export default function ESENetBanner() {
           {/* Right Stats Section */}
           <div className="flex flex-wrap justify-center items-center gap-6">
             <StatBubble
-              count="20+"
+              count="30+"
               label="Partenaires
 "
               className="w-36 h-36 bg-blue-600"
             />
             <StatBubble
               count="10+"
-              label="Speakers"
+              label="intervenants"
               className="w-44 h-44 bg-blue-500"
             />
             <StatBubble
               count="500+"
-              label="Attendees"
+              label="participants"
               className="w-32 h-32 bg-blue-400"
             />
           </div>

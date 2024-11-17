@@ -5,7 +5,7 @@ export function Speaker() {
     {
       quote:
         "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Nizar Ben Néji",
+      name: "Sofiene Hemissi ",
       designation: "Ministre tunisien des Technologies de la communication",
       src: "/speqkers/elwzir.png",
     },
@@ -40,9 +40,23 @@ export function Speaker() {
     {
       quote:
         "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Sarah lamin",
-      designation: "CEO de Convergen Agency",
-      src: "/speqkers/sara.jpg",
+      name: "Houda bakir",
+      designation: "Historiar- ODC",
+      src: "/speqkers/mra.jpg",
+    },
+    {
+      quote:
+        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Youssef Boufaied",
+      designation: "Coordinateur du projet Maken TIC DCE",
+      src: "/speqkers/sayed.jpg",
+    },
+    {
+      quote:
+        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Abdlkerim rezgui",
+      designation: "Managing Director Analytics BI4YOU",
+      src: "/speqkers/Abdelkerim.jpg",
     },
   ];
   return (

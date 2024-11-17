@@ -9,6 +9,13 @@ interface Sponsor {
 }
 
 const sponsors: Sponsor[] = [
+  { name: "MESRS", logo: "/logo/ta3lim.png" },
+  { name: "MTCENT", logo: "/logo/logo.png" },
+  { name: "UMA", logo: "/logo/uma.png" },
+  { name: "Technopole", logo: "/logo/technopole.png" },
+  { name: "INJAZ", logo: "/logo/INJAZ.png" },
+  { name: "Poulina", logo: "/logo/Polina.png" },
+  { name: "UGFS", logo: "/logo/UGFS.png" },
   { name: "ABSHORE", logo: "/logo/ABSHORE.png", },
   { name: "AICTO", logo: "/logo/AICTO.png" },
   { name: "bi4you", logo: "/logo/bi4you.png" },
@@ -20,18 +27,16 @@ const sponsors: Sponsor[] = [
   { name: "Elon", logo: "/logo/elon.png" },
   { name: "Enda", logo: "/logo/enda.png" },
   { name: "EY", logo: "/logo/ey.png" },
-  { name: "INJAZ", logo: "/logo/INJAZ.png" },
   { name: "ISCAE", logo: "/logo/iscae.png" },
-  { name: "Logo", logo: "/logo/logo.png" },
   { name: "Neurodata", logo: "/logo/neurodata.png" },
-  { name: "Poulina", logo: "/logo/Polina.png" },
   { name: "PwC", logo: "/logo/pwc.png" },
   { name: "Sofrecom", logo: "/logo/sofrecom.png" },
-  { name: "Technopole", logo: "/logo/technopole.png" },
   { name: "TIDCE", logo: "/logo/tidce.png" },
   { name: "Trust IT", logo: "/logo/trust.png" },
-  { name: "UGFS", logo: "/logo/UGFS.png" },
-  { name: "UMA", logo: "/logo/uma.png" },
+  
+  
+  
+  
 ];
 
 export function HappySponsors() {

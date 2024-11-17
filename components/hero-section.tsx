@@ -1,7 +1,6 @@
-//hero-section.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import { Button } from "./ui/button";
@@ -19,21 +18,18 @@ interface TimerComponentProps {
 }
 
 const TimerComponent: React.FC<TimerComponentProps> = ({ value, label }) => (
-  <div className=" flex flex-col items-center justify-center bg-blue-500/10 rounded-lg p-3 m-2 min-w-[100px] border border-blue-500/20">
+  <div className="flex flex-col items-center justify-center bg-blue-500/10 rounded-lg p-3 m-2 min-w-[100px] border border-blue-500/20">
     <span className="text-3xl font-bold text-white mb-1">
       {value.toString().padStart(2, "0")}
     </span>
-    <span className="text-xs uppercase tracking-wider text-blue-200">
-      {label}
-    </span>
+    <span className="text-xs uppercase tracking-wider text-blue-200">{label}</span>
   </div>
 );
 
 const Countdown: React.FC = () => {
-  const calculateTimeLeft = (): TimeLeft | null => {
+  const calculateTimeLeft = useCallback((): TimeLeft | null => {
     const targetDate = new Date("2024-11-27");
     const difference = +targetDate - +new Date();
-
     if (difference > 0) {
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -42,19 +38,18 @@ const Countdown: React.FC = () => {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-
     return null;
-  };
+  }, []);
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [calculateTimeLeft]);
 
   if (!timeLeft) {
     return (
@@ -67,9 +62,7 @@ const Countdown: React.FC = () => {
   return (
     <div className="mt-8 mb-6">
       <div className="text-center mb-4">
-        <span className="text-blue-200 text-sm uppercase tracking-wider">
-          L'événement commence dans
-        </span>
+        <span className="text-blue-200 text-sm uppercase tracking-wider">L'événement commence dans</span>
       </div>
       <div className="flex flex-wrap justify-center gap-2">
         <TimerComponent value={timeLeft.days} label="jours" />
@@ -85,64 +78,38 @@ interface ImagesSliderDemoProps {
   className?: string;
 }
 
+export const ImagesSliderDemo: React.FC<ImagesSliderDemoProps> = ({ className }) => {
+  const scrollToBottom = useCallback(() => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  }, []);
 
-export const ImagesSliderDemo: React.FC<ImagesSliderDemoProps> = ({
-  className,
-}) => {
-  const scrollToBottom = () => {
-    // Scroll to the bottom of the page
-    window.scrollTo({ top: document.body.scrollHeight-100, behavior: "smooth" });
-  };
-
-  const images: string[] = [
-    "/gallery/501.webp",
-    "/gallery/10.webp",
-    "/gallery/9.webp",
-    "/gallery/97.webp",
-  ];
+  const images: string[] = ["/gallery/501.webp", "/gallery/10.webp", "/gallery/9.webp", "/gallery/97.webp"];
 
   return (
-    
-    <ImagesSlider
-      className={`h-[40rem] backdrop-blur-sm bg-black ${className || ""}`}
-      images={images}
-      overlay={false}
-    >
+    <ImagesSlider className={`h-[40rem] backdrop-blur-sm bg-black ${className || ""}`} images={images} overlay={false}>
       <motion.div
-        initial={{
-          opacity: 0,
-          y: -80,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.6,
-        }}
+        initial={{ opacity: 0, y: -80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
         className="z-50 flex flex-col justify-center items-center px-4"
       >
         <motion.p className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
           <span className="text-transparent bg-gradient-to-b bg-clip-text from-blue-900 to-blue-500">
-            EsenNet
+            ESENet Job Fair
           </span>{" "}
-          <br />
+          Odyssée Business 4.0 <br />
           Votre réseau, votre avenir
         </motion.p>
 
         <Countdown />
 
-        <Button onClick={scrollToBottom}
-          className="px-6 py-3 backdrop-blur-sm border bg-blue-300/10 border-blue-500/20 
-                     text-white mx-auto text-center rounded-full relative mt-4 
-                     hover:bg-blue-400/20 transition-all duration-300 hover:scale-105"
-            >
-          <span  className="text-lg">Inscrivez-vous maintenant →</span>
+        <Button
+          onClick={scrollToBottom}
+          className="px-6 py-3 backdrop-blur-sm border bg-blue-300/10 border-blue-500/20 text-white mx-auto text-center rounded-full relative mt-4 hover:bg-blue-400/20 transition-all duration-300 hover:scale-105"
+        >
+          <span className="text-lg">Inscrivez-vous maintenant →</span>
           <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-blue-500 to-transparent" />
-          
         </Button>
-        
-        
       </motion.div>
     </ImagesSlider>
   );

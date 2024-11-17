@@ -21,21 +21,21 @@ const transporter = nodemailer.createTransport({
 // Named export for POST method
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { nom, prenom, email, Tele, faculte , niveau , specialite , recherche, source } = body;
+  const { nom, prenom, email, Tele, vous , faculte , organisme , recherche, source } = body;
 
   try {
     // Create user in the database
     const registration = await prisma.registration.create({
       data: {
-        nom,
-        prenom,
-        email,
-        Tele,
-        faculte,
-        niveau,
-        specialite,
-        recherche,
-        source,
+      nom  ,
+      prenom,
+      email,
+      Tele,
+      vous,
+      faculte,
+      organisme,
+      recherche,
+      source,
       },
     });
 
@@ -82,34 +82,62 @@ const mailOptions = {
 
     // Fetch all registrations for the Excel report
     //const allRegistrations = await prisma.registration.findMany();
-     const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/, '\n'),
-      },
-      scopes: [
-        'https://www.googleapis.com/auth/drive',
-        'https://www.googleapis.com/auth/drive.file',
-        'https://www.googleapis.com/auth/spreadsheets',
-      ],
-    });
-
-    const sheets = google.sheets({ auth, version: 'v4' });
-
-    // Append data to Google Sheets
-    const response = await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'A1:J1',
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [
-          [registration.id,nom, prenom, email, Tele, faculte, niveau, specialite, recherche, source],
+    if (faculte == null) {
+      const auth = new google.auth.GoogleAuth({
+        credentials: {
+          client_email: process.env.GOOGLE_CLIENT_EMAIL,
+          private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/, '\n'),
+        },
+        scopes: [
+          'https://www.googleapis.com/auth/drive',
+          'https://www.googleapis.com/auth/drive.file',
+          'https://www.googleapis.com/auth/spreadsheets',
         ],
-      },
-    });
+      });
+
+      const sheets = google.sheets({ auth, version: 'v4' });
+
+      // Append data to Google Sheets
+      const response = await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID,
+        range: 'A1:I1',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: [
+            [registration.id, nom, prenom, email, Tele, vous, faculte, recherche, source],
+          ],
+        },
+      });
 
 
+    } else {
+      const auth = new google.auth.GoogleAuth({
+        credentials: {
+          client_email: process.env.GOOGLE_CLIENT_EMAIL,
+          private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/, '\n'),
+        },
+        scopes: [
+          'https://www.googleapis.com/auth/drive',
+          'https://www.googleapis.com/auth/drive.file',
+          'https://www.googleapis.com/auth/spreadsheets',
+        ],
+      });
 
+      const sheets = google.sheets({ auth, version: 'v4' });
+
+      // Append data to Google Sheets
+      const response = await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID1,
+        range: 'A1:I1',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: [
+            [registration.id, nom, prenom, email, Tele, vous, organisme, recherche, source],
+          ],
+        },
+      });
+      
+    }
     return NextResponse.json({ message: 'User registered and emails sent successfully.' });
   } catch (error) {
     console.error('Error during registration:', error);
